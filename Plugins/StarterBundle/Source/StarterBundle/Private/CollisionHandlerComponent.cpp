@@ -4,6 +4,7 @@
 #include "CollisionHandlerComponent.h"
 #include "Components/PrimitiveComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "TimerManager.h"
 
 // Sets default values for this component's properties
 UCollisionHandlerComponent::UCollisionHandlerComponent()
