@@ -63,7 +63,7 @@ class STARTERBUNDLE_API UCollisionHandlerComponent : public UActorComponent
 	GENERATED_BODY()
 
 public:	
-	// Sets default values for this component's properties
+	/* Constructor */
 	UCollisionHandlerComponent();
 
 	/* Whether to use trace complex option during sphere trace or not */
@@ -100,16 +100,16 @@ public:
 	/* Native version above, called before BP delegate */
 	FOnHitNative OnHitNative;
 
-	/* Delegate called when there was a collision */
+	/* Delegate called when collision was activated */
 	UPROPERTY(BlueprintAssignable, Category = "CollisionHandler")
 	FOnCollisionActivated OnCollisionActivated;
 	/* Native version above, called before BP delegate */
 	FOnCollisionActivatedNative OnCollisionActivatedtNative;
 
-	/* Delegate called when collision was activated */
+	/* Delegate called when collision was deactivated */
 	UPROPERTY(BlueprintAssignable, Category = "CollisionHandler")
 	FOnCollisionDeactivated OnCollisionDeactivated;
-	/* Delegate called when collision was deactivated */
+	/* Native version above, called before BP delegate */
 	FOnCollisionDeactivatedNative OnCollisionDeactivatedNative;
 
 	/* Updates colliding component and sockets array that should be associated with it */
@@ -124,8 +124,20 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "CollisionHandler")
 	void DeactivateCollision();
 
+	UFUNCTION(BlueprintCallable, Category = "CollisionHandler")
+	TArray<FName> GetCollisionSockets() const;
+
+	UFUNCTION(BlueprintCallable, Category = "CollisionHandler")
+	UPrimitiveComponent* GetCollidingComponent() const;
+
+	UFUNCTION(BlueprintCallable, Category = "CollisionHandler")
+	bool IsCollisionActivated() const;
+
+	UFUNCTION(BlueprintCallable, Category = "CollisionHandler")
+	ECollisionPart GetActivatedCollisionPart() const;
+
 protected:
-	// Called when the game starts
+	/* Called when the game starts */
 	virtual void BeginPlay() override;
 
 	/* Tracks which collision part was recently activated */
@@ -144,7 +156,7 @@ protected:
 	UPROPERTY(BlueprintReadOnly, Category = "CollisionHandler")
 	uint32 bIsCollisionActivated : 1;
 
-	/** Calls the collision handler callbacks */
+	/* Calls the collision handler callbacks */
 	void NotifyOnHit(const FHitResult& HitResult);
 	void NotifyOnCollisionActivated(ECollisionPart CollisionPart);
 	void NotifyOnCollisionDeactivated();

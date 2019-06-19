@@ -152,3 +152,23 @@ void UCollisionHandlerComponent::DeactivateCollision()
 	NotifyOnCollisionDeactivated();
 }
 
+TArray<FName> UCollisionHandlerComponent::GetCollisionSockets() const
+{
+	return CollisionSockets;
+}
+
+UPrimitiveComponent* UCollisionHandlerComponent::GetCollidingComponent() const
+{
+	return CollidingComponent;
+}
+
+bool UCollisionHandlerComponent::IsCollisionActivated() const
+{
+	return bIsCollisionActivated;
+}
+
+ECollisionPart UCollisionHandlerComponent::GetActivatedCollisionPart() const
+{
+	return ActivatedCollisionPart;
+}
+
