@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "StarterBundle",
+	"Description": "Starter Bundle containing some usefull components and more.",
+	"Category": "Other",
+	"CreatedBy": "Grzegorz Szewczyk",
+	"CreatedByURL": "https://ue4dcs.com",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "StarterBundle",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
