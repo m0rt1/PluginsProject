@@ -4,27 +4,25 @@
 
 #include "CoreMinimal.h"
 #include "Animation/AnimNotifies/AnimNotifyState.h"
-#include "CollisionHandlerComponent.h"
-#include "ActivateCollisionNotifyState.generated.h"
-
+#include "RotateOwnerAnimNotifyState.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class STARTERBUNDLE_API UActivateCollisionNotifyState : public UAnimNotifyState
+class STARTERBUNDLE_API URotateOwnerAnimNotifyState : public UAnimNotifyState
 {
 	GENERATED_BODY()
 
 public:
 	// constructor
-	UActivateCollisionNotifyState();
-	
+	URotateOwnerAnimNotifyState();
+
 	// overriden functions
 	virtual void NotifyBegin(USkeletalMeshComponent * MeshComp, UAnimSequenceBase * Animation, float TotalDuration) override;
 	virtual void NotifyEnd(USkeletalMeshComponent * MeshComp, UAnimSequenceBase * Animation) override;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
-	ECollisionPart CollisionPart;
-
+	/* Limit of degrees to rotate per second */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Rotating")
+	float DegreesPerSecond;
 };
